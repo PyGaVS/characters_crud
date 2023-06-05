@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdonisJS - A fully featured web framework for Node.js</title>
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+</head>
+<body>
+<form method="POST" action="{{route("create")}}">
+
+@!component('components/input', {
+      name: 'firstname',
+      label: 'Prénom du perso',
+    })
+
+@!component('components/input', {
+      name: 'lastname',
+      label: 'Nom de famille du perso',
+    })
+
+    <button class="connexion-button" type="submit">Ajouter le personnage</button>
+</form>
+  <table>
+  <thead>
+    <tr>
+      <th>
+        id
+      </th>
+      <th>
+        name
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    @each(character in characters)
+      <tr>
+        <td>
+          {{character['id']}}
+        </td>
+        <td>
+          {{character['lastname']}} {{character['firstname']}} 
+        </td>
+      </tr>
+    @endeach
+    
+    </tbody>
+  </table>
+</body>
+</html>

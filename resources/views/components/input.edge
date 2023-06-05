@@ -1,0 +1,12 @@
+@set('type', $props.type || 'text')
+@set('value', flashMessages.get($props.name) || '')
+
+<div class="form-control">
+    <label for="{{ name }}">{{ label }}</label>
+    <div>
+    <input id="{{ name }}" type="{{ type }}" name="{{ name }}" value="{{ value }}"/>
+    </div>
+    @if(flashMessages.has('errors.' + name))
+        <p class = "error"> {{ flashMessages.get('errors.' + name) }} </p>
+    @end
+</div>
